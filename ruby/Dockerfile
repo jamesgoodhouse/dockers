@@ -1,12 +1,12 @@
-FROM jamgood96/base
+FROM jamgood96/base:alpine3.4
 
-RUN PACKAGES="curl gdbm libffi libpq libxml2 libxslt \
-              ncurses openssl readline tzdata yaml zlib" && \
+RUN PACKAGES="curl freetds gdbm libffi libpq libstdc++ libxml2 libxslt \
+              ncurses nodejs openssl readline tzdata yaml zlib" && \
     apk --update --upgrade --no-cache add ${PACKAGES}
 
 # RUBY ------------------------------------------------------------------------
-ENV RUBY_MAJOR_VERSION="2.3" \
-    RUBY_VERSION="2.3.1" \
+ENV RUBY_MAJOR_VERSION="2.1" \
+    RUBY_VERSION="2.1.7" \
     BUNDLE_SILENCE_ROOT_WARNING="1"
 
 RUN BUILD_PACKAGES="build-base gdbm-dev libffi-dev linux-headers ncurses-dev \
